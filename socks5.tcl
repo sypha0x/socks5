@@ -66,8 +66,8 @@ proc ::socks5::configure {args} {
     while {[::cmdline::getopt args $options option value] == 1} {
         switch -- $option {
             proxyport {
-                if {($value <= 0) || ($value >= 65565)} {
-                    return -code error "proxyport requires a value between 1 and 65565"
+                if {($value <= 0) || ($value > 65535)} {
+                    return -code error "proxyport requires a value between 1 and 65535"
                 }
             }
             bindtimeout {
